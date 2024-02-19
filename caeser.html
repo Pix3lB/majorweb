@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesar Cipher Visualization</title>
+    <link rel="stylesheet" href="caesar.css">
+</head>
+
+<body>
+    <h1>Caesar Cipher Visualization</h1>
+
+    <textarea id="inputText" placeholder="Enter your text"></textarea>
+
+    <label for="shift">Enter shift value:</label>
+    <input type="number" id="shift" min="1" value="3">
+
+    <button onclick="animateCipher()">Encrypt</button>
+    <button onclick="animateDecipher()">Decrypt</button>
+
+    <p id="outputText"></p>
+
+    <div class="visualization" id="visualization"></div>
+
+    <script src="caesar.js"></script>
+</body>
+
+</html>
