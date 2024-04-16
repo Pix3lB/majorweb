@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innovative Image Encryption</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      min-height: 600px;
+      width: 100%;
+      padding: 30px;
+    }
+
+    .card {
+      position: relative;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .card::before,
+    .card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 10px;
+      background-repeat: no-repeat;
+      background-position: bottom;
+      background-size: contain;
+      opacity: 0.1;
+    }
+
+    .card::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='10'%3E%3Cg fill-rule='evenodd'%3E%3Cpath d='M.293.293a1 1 0 0 1 1.414 0L4 5.586l2.293-2.293a1 1 0 1 1 1.414 1.414L5.586 6l2.293 2.293a1 1 0 0 1-1.414 1.414L4 7.414 1.707 10.707a1 1 0 0 1-1.414-1.414L2.586 6 .293 4.707z'/%3E%3C/g%3E%3C/svg%3E");
+      transform: rotate(180deg);
+    }
+
+    .card::after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='10'%3E%3Cg fill-rule='evenodd'%3E%3Cpath d='M.293.293a1 1 0 0 1 1.414 0L4 5.586l2.293-2.293a1 1 0 1 1 1.414 1.414L5.586 6l2.293 2.293a1 1 0 0 1-1.414 1.414L4 7.414 1.707 10.707a1 1 0 0 1-1.414-1.414L2.586 6 .293 4.707z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .card h2 {
+      color: #1a1a1a;
+      font-size: 2rem;
+      font-weight: 700;
+      padding: 25px;
+    }
+
+    .card form label {
+      display: block;
+      margin: 1rem 0;
+      color: #1a1a1a;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .card form input[type='file'] {
+      display: block;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      background-color: #f0f0f0;
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    .card form button[type='button'] {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      margin: 1rem 0;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .card form button[type='button']:hover {
+      background-color: #0056b3;
+    }
+
+    .card figcaption {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      color: #fff;
+      background-color: #1a1a1a;
+      font-size: 0.9rem;
+    }
+
+    .card figcaption a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .card figcaption a:hover {
+      color: #0056b3;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      opacity: 0;
+      transition: all 0.4s ease;
+      pointer-events: none;
+    }
+
+    .card .preview-image {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      border: 4px solid #1a1a1a;
+      border-top: 4px solid #007bff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: translate(-50%, -50%)rotate(0deg);
+      }
+
+      100% {
+        transform: translate(-50%, -50%)rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="card">
+      <h2>Image Encryption</h2>
+      <form>
+        <label for="encryptFileInput">Select an image:</label>
+        <input type="file" id="encryptFileInput" accept="image/*">
+        <button type="button" onclick="encryptImage()">Encrypt Image</button>
+      </form>
+      <div class="spinner" style="display: none;"></div>
+      <a id="encryptDownloadLink" download="encrypted_image.jpeg" style="display: none;">Download Encrypted Image</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h2>Image Decryption</h2>
+      <form>
+        <label for="decryptFileInput">Select an encrypted file:</label>
+        <input type="file" id="decryptFileInput" accept="jpeg">
+        <label for="decryptKeyInput">Select the decryption key file:</label>
+        <input type="file" id="decryptKeyInput" accept=".txt">
+
+        <button type="button" onclick="decryptImage()">Decrypt Image</button>
+      </form>
+      <img id="decryptPreviewImage" style="display: none; width: 100%; height: auto;">
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+  <script>
+    function generateAESKey(size) {
+      var keySize = size / 6; // Fix size division
+      var key = CryptoJS.lib.WordArray.random(keySize);
+      return key.toString();
+    }
+
+    function encryptImage() {
+      const fileInput = document.getElementById('encryptFileInput');
+      const file = fileInput.files[0];
+
+      if (!file) {
+        alert('Please select an image file.');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const imageData = event.target.result.split(',')[1];
+        const encryptionKey = generateAESKey(256);
+
+
+        const encryptedImageData = CryptoJS.AES.encrypt(imageData, encryptionKey).toString();
+        const encryptedImageBlob = new Blob([encryptedImageData], { type: 'text/plain' });
+        const downloadLink = document.getElementById('encryptDownloadLink');
+        downloadLink.href = URL.createObjectURL(encryptedImageBlob);
+        downloadLink.style.display = 'block';
+
+        // Download link for encryption key
+        const encryptionKeyBlob = new Blob([encryptionKey], { type: 'text/plain' });
+        const keyDownloadLink = document.createElement('a');
+        keyDownloadLink.href = URL.createObjectURL(encryptionKeyBlob);
+        keyDownloadLink.download = 'encryption_key.txt';
+        keyDownloadLink.style.display = 'none';
+        document.body.appendChild(keyDownloadLink);
+        keyDownloadLink.click();
+        document.body.removeChild(keyDownloadLink);
+      };
+      reader.readAsDataURL(file);
+    }
+
+
+    function decryptImage() {
+      const imageFileInput = document.getElementById('decryptFileInput');
+      const keyFileInput = document.getElementById('decryptKeyInput');
+      const imageFile = imageFileInput.files[0];
+      const keyFile = keyFileInput.files[0];
+
+      if (!imageFile || !keyFile) {
+        alert('Please select both the encrypted image file and the decryption key file.');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const encryptedImageData = event.target.result;
+
+        const keyReader = new FileReader();
+        keyReader.onload = function (keyEvent) {
+          const key = keyEvent.target.result;
+
+          try {
+            const decryptedData = CryptoJS.AES.decrypt(encryptedImageData, key).toString(CryptoJS.enc.Utf8);
+            if (!decryptedData) {
+              alert('Decryption failed.');
+              return;
+            }
+
+            const decryptedImageSrc = 'data:image/jpeg;base64,' + decryptedData;
+            const decryptedImage = new Image();
+            decryptedImage.src = decryptedImageSrc;
+            decryptedImage.onload = function () {
+              const canvas = document.createElement('canvas');
+              canvas.width = decryptedImage.width;
+              canvas.height = decryptedImage.height;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(decryptedImage, 0, 0);
+              const decryptedImageDataURI = canvas.toDataURL('image/jpeg');
+              const downloadLink = document.createElement('a');
+              downloadLink.href = decryptedImageDataURI;
+              downloadLink.download = 'decrypted_image.jpeg';
+              downloadLink.style.display = 'none';
+              document.body.appendChild(downloadLink);
+              downloadLink.click();
+              document.body.removeChild(downloadLink);
+            };
+
+          } catch (error) {
+            alert('Error during decryption: ' + error.message);
+          }
+        };
+        keyReader.readAsText(keyFile);
+      };
+      reader.readAsText(imageFile);
+    }
+
+  </script>
+
+</body>
+
+</html>
