@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Steganography</title>
+	<link rel="stylesheet" href="../CSS/steno.css">
+</head>
+
+<body>
+	<header>
+		<nav style="font-size: 1rem;">
+			<a href="timeline.html">Timeline</a>
+			<a href="Image_ENC_DEC.html">Image</a>
+			<a href="../index.html">Home</a>
+			<a href="AES.html">AES</a>
+			<a href="caeser.html">Caesar</a>
+		</nav>
+	</header>
+	<section class="hero">
+		<h1>Steganography </h1>
+		<div class="stuff">
+			<div id="left">
+				<h2>Image:</h2>
+				<input id="file" type="file" /><br />
+				<h2>Text:<span id="capacity"></span></h2>
+				<textarea id="text">This is a sample message write your own.</textarea>
+				<div class="btns">
+					<span id="hide" class="btn">Hide</span>
+					<span id="read" class="btn">Read</span>
+				</div>
+			</div>
+			<div id="right">
+				<div id="original" class="half">
+					<h2>Plain Image:</h2>
+					<img id="img" src="image.png" />
+				</div>
+				<div id="stego" class="half">
+					<h2>Encoded Image:</h2>
+					<img id="cover" src="" />
+					<a id="download" class="btn small" download="cover.png" rel="nofollow"><strong>D</strong></a>
+				</div>
+				<div id="messageArea" class="invisible">
+					<h2>Message:</h2>
+					<div id="message"></div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</section>
+	<script type="text/javascript" src="../JS/steganography.min.js"></script>
+	<script type="text/javascript" src="../JS/steno.js"></script>
+</body>
+
+</html>

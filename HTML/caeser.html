@@ -5,25 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caesar Cipher </title>
-    <link rel="stylesheet" href="caesar.css">
+    <link rel="stylesheet" href="../CSS/caesar.css">
+    <script src="../JS/caesar.js"></script>
 </head>
 
 <body>
-    <h1>Caesar Cipher Visualization</h1>
-
-    <textarea id="inputText" placeholder="Enter your text"></textarea>
-
-    <label for="shift">Enter shift value:</label>
-    <input type="number" id="shift" min="1" value="3">
-
-    <button onclick="animateCipher()">Encrypt</button>
-    <button onclick="animateDecipher()">Decrypt</button>
-
-    <p id="outputText"></p>
-
-    <div class="visualization" id="visualization"></div>
-
-    <script src="caesar.js"></script>
+    <header>
+        <nav style="font-size: 1rem;">
+            <a href="timeline.html">Timeline</a>
+            <a href="Image_ENC_DEC.html">Image</a>
+            <a href="../index.html">Home</a>
+            <a href="AES.html">AES</a>
+            <a href="steno.html">Image Encoding</a>
+        </nav>
+    </header>
+    <section  class="hero">
+    <h1 style="font-size: 5rem;">Caesar's Cipher </h1>
+    <div class="spacer"></div>
+    <div class="container">
+        <textarea id="inputText" placeholder="Enter your text to be encrypted"></textarea>
+        <div class="controls">
+          <input type="number" id="shift" min="1" value="3">
+          <button onclick="animateCipher()" style="background-color: #13703A;">Encrypt</button>
+          <button onclick="animateDecipher()" style="background-color: #D2292D;">Decrypt</button>
+        </div>
+      <div class="visualization" id="visualization" >Hail Caesar</div>
+      </div>
+    </div>
+</section>
 </body>
-
 </html>
