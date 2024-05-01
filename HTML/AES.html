@@ -8,79 +8,21 @@
    <title>AES Encryption/Decryption</title>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
       integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="../CSS/AES.css">
 
 
-   <style>
-      body {
-         font-family: Arial, sans-serif;
-         background-color: #f2f2f2;
-         margin: 0;
-         padding: 0;
-      }
-
-      h1 {
-         background-color: #333;
-         color: #fff;
-         margin: 0;
-         padding: 20px;
-         text-align: center;
-      }
-
-      .input-container {
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         padding: 10px;
-         background-color: #ddd;
-         margin: 5px 0;
-         border-radius: 5px;
-      }
-
-      .input-container label {
-         flex-basis: 25%;
-         font-size: 1rem;
-         font-weight: bold;
-      }
-
-      .input-container input[type="text"],
-      .input-container input[type="number"] {
-         flex-basis: 70%;
-         padding: 10px;
-         border: 1px solid #ccc;
-         border-radius: 5px;
-      }
-
-      #dec,
-      #ec {
-         padding: 50px 15px 15px 20px;
-
-      }
-
-
-      #encrypt,
-      #decrypt {
-         background-color: #4CAF50;
-         color: #fff;
-         padding: 10px 20px;
-         border: none;
-         border-radius: 5px;
-         cursor: pointer;
-         margin: 5px 5px 5px 0;
-      }
-
-      #encrypted-message,
-      #decrypted-message {
-         padding: 0px 20px 0px 10px;
-         display: inline-block;
-         width: calc(100% - 36px);
-         /* Allow for the visibility checkbox */
-         height: auto;
-         resize: vertical;
-      }
-   </style>
 </head>
 
 <body>
+   <header>
+      <nav style="font-size: 1rem;">
+         <a href="timeline.html">Timeline</a>
+         <a href="ImageAES.html">Image</a>
+         <a href="../index.html">Home</a>
+         <a href="caeser.html">Caesar</a>
+         <a href="steno.html">Image Encoding</a>
+      </nav>
+   </header>
    <h1>AES Encryption/Decryption</h1>
 
    <div id="ec">
@@ -98,8 +40,9 @@
          <p id="encrypted-message">Your Encrypted Message will appear here...</p>
       </div>
    </div>
-
-
+<div class="spacer">
+<br><br>
+</div>
    <div id="dec">
       <div class="input-container">
          <label for="message">Data to Decrypt: </label>
@@ -115,26 +58,7 @@
          <p id="decrypted-message">Your Decrypted Message will appear here...</p>
       </div>
    </div>
-
-
-
-   <script>
-      function encryptMessage() {
-         var encrypted = CryptoJS.AES.encrypt(
-            document.getElementById("message").value,
-            document.getElementById("p").value
-         );
-         document.getElementById("encrypted-message").innerHTML = encrypted;
-      }
-      function decryptMessage() {
-         var decrypted = CryptoJS.AES.decrypt(
-            document.getElementById("decm").value,
-            document.getElementById("decp").value
-         ).toString(CryptoJS.enc.Utf8);
-         document.getElementById("decrypted-message").innerHTML = decrypted;
-      }
-   </script>
-
+   <script src="../JS/AES.js"></script>
 </body>
 
 </html>

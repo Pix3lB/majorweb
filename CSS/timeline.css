@@ -1,21 +1,10 @@
+@import "./index.css";
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-header {
-    position: fixed;
-    width: 100%;
-    background-color: #000;
-    z-index: 1000;
-}
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    align-items: center;
-}
 
 nav a {
     text-decoration: none;
@@ -23,11 +12,7 @@ nav a {
     margin: 0 1rem;
     cursor: pointer;
 }
-body {
-  margin: 0;
-  font-family:  'Gotham', sans-serif;
-  background: #000000;
-}
+
 
 .timeline {
   position: relative;

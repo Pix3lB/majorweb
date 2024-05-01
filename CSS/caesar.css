@@ -1,8 +1,6 @@
 @import "./index.css";
 
-.spacer{
-    height: 10%;
-}
+
 .container {
     display: flex;
     align-items: center;

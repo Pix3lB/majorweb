@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Encryption</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/ImageAES.css">
+</head>
+
+<body>
+  <header>
+    <nav style="font-size: 1rem;">
+        <a href="timeline.html">Timeline</a>
+        <a href="caeser.html">Caesar</a>
+        <a href="../index.html">Home</a>
+        <a href="AES.html">AES</a>
+        <a href="steno.html">Image Encoding</a>
+    </nav>
+</header>
+  <div class="container">
+    <div class="card">
+      <h2>Image Encryption</h2>
+      <form>
+        <label for="encryptFileInput">Select an image:</label>
+        <input type="file" id="encryptFileInput" accept="image/*">
+        <button type="button" onclick="encryptImage()">Encrypt Image</button>
+      </form>
+      <div class="spinner" style="display: none;"></div>
+      <a id="encryptDownloadLink" download="encrypted_image.jpeg" style="display: none;">Download Encrypted Image</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h2>Image Decryption</h2>
+      <form>
+        <label for="decryptFileInput">Select an encrypted file:</label>
+        <input type="file" id="decryptFileInput" accept="jpeg">
+        <label for="decryptKeyInput">Select the decryption key file:</label>
+        <input type="file" id="decryptKeyInput" accept=".txt">
+
+        <button type="button" onclick="decryptImage()">Decrypt Image</button>
+      </form>
+      <img id="decryptPreviewImage" style="display: none; width: 100%; height: auto;">
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+  <script src="../JS/ImageAES.js"></script>
+  <script>
+
+  </script>
+
+</body>
+
+</html>
