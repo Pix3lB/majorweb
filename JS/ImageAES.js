@@ -3,7 +3,6 @@ function generateAESKey(size) {
     var key = CryptoJS.lib.WordArray.random(keySize);
     return key.toString();
   }
-
   function encryptImage() {
     const fileInput = document.getElementById('encryptFileInput');
     const file = fileInput.files[0];
